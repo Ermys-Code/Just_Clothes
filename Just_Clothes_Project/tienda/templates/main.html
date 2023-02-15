@@ -1,0 +1,5 @@
+{% for category in categories %}
+<hr>
+<li class="list-group-item sidebar_base_li"><a href="{{ category.get_absolute_url }}">category.name</a></li>
+
+{% endfor %}

@@ -25,6 +25,10 @@ class Pedido(models.Model):
 
 class Categoria(models.Model):
     name=models.CharField('name',max_length=200,null=False)
+    
+    def get_absolute_url(self):
+        return reverse('filter_category',args=[str(self.id)])
+    
     def __str__(self):
         return self.name
 
