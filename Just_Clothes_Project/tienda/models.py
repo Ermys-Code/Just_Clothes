@@ -30,6 +30,7 @@ class Categoria(models.Model):
 
 class Producto(models.Model):
     name=models.CharField('name',max_length=200,null=False)
+    description = models.CharField('description', max_length=2000, null=False)
     category = models.ForeignKey('Categoria',on_delete=models.SET_NULL,null=True,blank=True)
     size=models.CharField('size',max_length=200,null=False)
     color=models.CharField('color',max_length=200,null=False)
