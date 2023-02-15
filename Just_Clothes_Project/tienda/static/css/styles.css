@@ -70,3 +70,22 @@ h1{
     font-size: 1.3em;
     color: black;
 }
+
+.footer_top{
+    background-color: #CD3636;
+    height: 15em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.footer_bottom{
+    background-color: #1C1C1C;
+    height: 15em;
+    color: white    ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
