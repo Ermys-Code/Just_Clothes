@@ -8,6 +8,20 @@ from django.shortcuts import redirect
 
 def main(request):
     
+    categories = []
+    
+    products = []
+    
+    
+    
+    for category in Categoria.objects.all():
+        categories.append(category)
+    
+    for product in Producto.objects.all():
+        products.append(product)
+        
+    
+    
     
     context = {
     }
