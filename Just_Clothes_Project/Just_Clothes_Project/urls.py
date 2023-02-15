@@ -24,9 +24,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tienda/', include('tienda.urls')),
-     path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('accounts/', include("django.contrib.auth.urls")),
-    path('', RedirectView.as_view(url="/accounts/login/", permanent=False)),
+    path('', RedirectView.as_view(url="/tienda", permanent=False)),
 ]
 
 if settings.DEBUG:
