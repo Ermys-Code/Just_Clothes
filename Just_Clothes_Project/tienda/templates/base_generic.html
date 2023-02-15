@@ -11,18 +11,35 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
        
-        
-        <!-- Add additional CSS in static file -->
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     </head>
 
     <body>
 
-        <header>
-            <div class= "title-div">
-            <h1>Just Clothes</h1>
+        <header class="container-fluid">
+            <div class="row">
+            
+                <div class="col-12 header_top">
+                    <h1 class="main_title">JUST CLOTHES</h1>
+                </div>
+            
+                <div class="col-12 header_separator">
+                </div>
+            
+                <a href="" class="col-1 header_bottom menu_btn_container">
+                    <img src="images/menu.png" class="menu_image" width="30em" height="30em">
+                </a>
+                <div class="col-10 header_bottom">
+                    <input class="search_bar" type="text" placeholder="Busca...">
+                    <a href="" class="search_button">
+                        <img src="images/search.png" width="25em" height="25em">
+                    </a>
+                </div>
+                <div class="col-1 header_bottom"></div>
+                
             </div>
+
         </header>
 
         <main>

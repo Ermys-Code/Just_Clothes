@@ -1,0 +1,57 @@
+h1{
+    margin: 0;
+}
+
+.header_top{
+    background-color: #CD3636;
+    height: 5.7em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_separator{
+    background-color: #ffffff;
+    height: 0.3em;
+}
+
+.header_bottom{
+    background-color: #1C1C1C;
+    height: 3em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_title{
+    font-size: 5em;
+}
+
+.menu_btn_container{
+    height: 3em;
+    border-right: solid white;
+    
+}
+
+.search_bar{
+    border-top: solid 0.1em #1C1C1C;
+    border-left: solid 0.1em #1C1C1C;
+    border-bottom: solid 0.1em #1C1C1C;
+    border-right: 0;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    padding: 0.3em;
+    width: 30em;
+}
+
+.search_button{
+    background-color: white;
+    border-top: solid 0.1em #1C1C1C;
+    border-right: solid 0.1em #1C1C1C;
+    border-bottom: solid 0.1em #1C1C1C;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    padding: 0.2em 0.6em 0.2em 0.2em;
+}
