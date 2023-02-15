@@ -14,11 +14,8 @@ def main(request):
     
     for category in Categoria.objects.all():
         categories.append(category)
-        products.append([])
-    
-    
-    for product in Producto.objects.all():
-        products[product.category].append(product)
+        provitional_list = Producto.objects.filter(category__exact=category) 
+        products.append(provitional_list)
     
     
     context = {
@@ -50,7 +47,7 @@ def filter_category(request, pk):
     
     applied = Categoria.objects.get(pk=pk)
     
-    results = Producto.objects.filter(status__exact=applied) 
+    results = Producto.objects.filter(category__exact=applied) 
         
     context = {
         
