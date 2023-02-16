@@ -1,1 +1,13 @@
-<h1>{{applied}}</h1>
+{% extends "base_generic.html" %}
+{% block content %}
+
+{% for result in results %}
+
+
+<img src={{result.img.url}} alt={{result.name}}>
+
+
+
+{% endfor %}
+
+{% endblock %}
