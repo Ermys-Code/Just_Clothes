@@ -7,12 +7,12 @@ from django.shortcuts import redirect
 
 
 def main(request):
-    
     products = []
     
     
     
     for category in Categoria.objects.all():
+        
         provitional_list = Producto.objects.filter(category__exact=category) 
         products.append(provitional_list)
     
@@ -26,9 +26,10 @@ def main(request):
 def base_generic(request):
     
     categories = []
+    
     for category in Categoria.objects.all():
         categories.append(category)
-        
+
     context = {
         "categories":categories,
     }
