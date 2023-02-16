@@ -1,7 +1,25 @@
 {% extends "base_generic.html" %}
 {% block content %}
 
-                        
+{% for category in products %}           
+<div class="container-fluid py-2">
+    <div class="d-flex flex-row flex-nowrap overflow-auto">
+        {% for product in category %}           
+
+        <div class="card card-body">
+            
+            <h5>{{product.name}}</h5>
+            <img class="card_image" src={{product.img.url}} width="150em" height="150em"></img>
+            <p>{{product.description}}</p>
+
+        </div>
+        
+
+        {% endfor %}    
+    </div>
+</div>
+
+{% endfor %}
 
 
 {% endblock %}
