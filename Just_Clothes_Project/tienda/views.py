@@ -32,10 +32,11 @@ def filter_global(request):
     applied = request.POST
         
     for product in Producto.objects.all():
-        if(applied in product.name or applied in product.description or applied == product.category or applied == product.color):
+        if(applied.get("search") in product.name or applied.get("search") in product.description or applied.get("search") == product.category or applied.get("search") == product.color):
             results.append(product)
                       
     context = {
+        "applied":applied.get("search"),
         
         "results":results
             
@@ -50,6 +51,7 @@ def filter_category(request, pk):
     results = Producto.objects.filter(category__exact=applied) 
         
     context = {
+        "applied":applied,
         
         "results":results
     }
