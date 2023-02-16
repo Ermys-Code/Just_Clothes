@@ -30,11 +30,11 @@
                 <div class="col-12 header_separator">
                 </div>
             
-                <a href="" class="col-1 header_bottom menu_btn_container">
+                <a  class="col-1 header_bottom menu_btn_container" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     <i class="bi bi-list menu_icon"></i>
                     
-                    
                 </a>
+
                 
                 
 
@@ -49,6 +49,13 @@
                     </form>
                 </div>
                 <div class="col-1 header_bottom"></div>
+
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <li class="list-group-item sidebar_base_li"><a href="{{ category.get_absolute_url }}">{{category.name}}</a></li>
+
+                    </div>
+                  </div>
 
             </div>
 
