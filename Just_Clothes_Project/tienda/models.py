@@ -54,7 +54,7 @@ class Carrito(models.Model):
     price=models.FloatField(null=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 class Stock(models.Model):
@@ -62,7 +62,7 @@ class Stock(models.Model):
     cuantity=models.IntegerField(null=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 

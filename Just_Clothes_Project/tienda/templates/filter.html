@@ -1,10 +1,10 @@
 {% extends "base_generic.html" %}
 {% block content %}
 
+<div class="row">
 {% for result in results %}
 
-
-<div class="card" style="width: 18rem;">
+  <div class="card m-2" style="width: 18rem;">
     <img src={{result.img.url}} class="card-img-top" alt={{result.name}}>
     <div class="card-body">
       <h5 class="card-title">{{result.name}}</h5>
@@ -18,5 +18,7 @@
 
 
 {% endfor %}
+
+</div>
 
 {% endblock %}
