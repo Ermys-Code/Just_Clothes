@@ -25,6 +25,19 @@ def main(request):
     
     return render(request, "main.html", context=context)
 
+def base_generic(request):
+    
+    categories = []
+    for category in Categoria.objects.all():
+        categories.append(category)
+        
+    context = {
+        "categories":categories,
+    }
+    
+    return render(request, "base_generic.html", context=context)
+    
+
 def filter_global(request):
     
     results = []
