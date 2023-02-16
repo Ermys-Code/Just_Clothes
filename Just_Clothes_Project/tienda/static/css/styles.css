@@ -93,5 +93,11 @@ h1{
     align-items: center;
 }
 
-
-
+.card-body {
+    min-height: 20em;
+    min-width: 20em;
+    max-height: 20em;
+    max-width: 20em;
+    margin-right: 5px;
+    text-align: center;
+}
