@@ -2,6 +2,7 @@
 {% block content %}
 
 {% for category in products %}           
+<h3>{{category.0.category}}</h3>
 <div class="container-fluid py-2">
     <div class="d-flex flex-row flex-nowrap overflow-auto">
         {% for product in category %}           

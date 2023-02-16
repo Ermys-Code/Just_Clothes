@@ -8,18 +8,15 @@ from django.shortcuts import redirect
 
 def main(request):
     
-    categories = []
     products = []
     
     
     for category in Categoria.objects.all():
-        categories.append(category)
         provitional_list = Producto.objects.filter(category__exact=category) 
         products.append(provitional_list)
     
     
     context = {
-        "categories":categories,
         "products":products,
     }
     
