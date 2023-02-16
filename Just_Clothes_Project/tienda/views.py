@@ -11,6 +11,7 @@ def main(request):
     products = []
     
     
+    
     for category in Categoria.objects.all():
         provitional_list = Producto.objects.filter(category__exact=category) 
         products.append(provitional_list)
