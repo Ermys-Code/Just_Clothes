@@ -8,40 +8,32 @@ from django.shortcuts import redirect
 
 def main(request):
     products = []
-    
+    categories = []
     
     
     for category in Categoria.objects.all():
-        
+        categories.append(category)
         provitional_list = Producto.objects.filter(category__exact=category) 
         products.append(provitional_list)
     
     
     context = {
         "products":products,
+         "categories":categories,
     }
     
     return render(request, "main.html", context=context)
-
-def base_generic(request):
-    
-    categories = []
-    
-    for category in Categoria.objects.all():
-        categories.append(category)
-
-    context = {
-        "categories":categories,
-    }
-    
-    return render(request, "base_generic.html", context=context)
     
 
 def filter_global(request):
     
     results = []
+    categories = []
     
     applied = request.POST
+    
+    for category in Categoria.objects.all():
+        categories.append(category)
         
     for product in Producto.objects.all():
         if(applied.get("search") in product.name or applied.get("search") in product.description or applied.get("search") == product.category or applied.get("search") == product.color):
@@ -49,8 +41,8 @@ def filter_global(request):
                       
     context = {
         "applied":applied.get("search"),
-        
-        "results":results
+         "categories":categories,
+        "results":results,
             
     }
     
@@ -58,14 +50,19 @@ def filter_global(request):
 
 def filter_category(request, pk):
     
+    categories = []
+    
+    for category in Categoria.objects.all():
+        categories.append(category)
+    
     applied = Categoria.objects.get(pk=pk)
     
     results = Producto.objects.filter(category__exact=applied) 
         
     context = {
         "applied":applied,
-        
-        "results":results
+         "categories":categories,
+        "results":results,
     }
     
     return render(request, "filter.html", context = context)
@@ -90,12 +87,16 @@ def addToCart(request, pk):
 
 
 def detalle_producto(request, pk):
+    categories = []
     
-    product = Producto.objects.get(pk=pk)
+    for category in Categoria.objects.all():
+        categories.append(category)
     
+    product = Producto.objects.get(pk=pk) 
     
     context = {
         "product":product,
+        "categories":categories,
     }
     
     return render(request, "detalle_producto.html", context = context)
