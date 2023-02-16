@@ -4,7 +4,16 @@
 {% for result in results %}
 
 
-<img src={{result.img.url}} alt={{result.name}}>
+<div class="card" style="width: 18rem;">
+    <img src={{result.img.url}} class="card-img-top" alt={{result.name}}>
+    <div class="card-body">
+      <h5 class="card-title">{{result.name}}</h5>
+      <p class="card-text">{{result.description}}</p>
+      <p class="card-text">Precio : {{result.price}} €</p>
+      <a href="#" class="btn btn-primary">Ver</a>
+    </div>
+  </div>
+
 
 
 
