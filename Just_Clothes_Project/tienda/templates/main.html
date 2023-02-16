@@ -2,13 +2,13 @@
 {% block content %}
 
 {% for category in products %}     
-      
+
 <h3>{{category.0.category}}</h3>
 <div class="container-fluid py-2">
     <div class="d-flex flex-row flex-nowrap overflow-auto">
         {% for product in category %}           
 
-        <div class="card card-body">
+        <div class="card card-size">
             
             <h5>{{product.name}}</h5>
             <img class="card_image" src={{product.img.url}} width="150em" height="150em"></img>
