@@ -36,16 +36,16 @@
                     
                 </a>
 
+                <div class="col-10 header_bottom">
                 <form action="{% url 'filter_global' %}" method="POST">
                     {% csrf_token %}
-                    <div class="col-10 header_bottom">
                         <input id="search" name="search" class="search_bar" type="text" placeholder="Busca...">
 
                         <button type="submit" class="search_button">
                             <i class="bi bi-search search_icon"></i>
                         </a>
-                    </div>
-                </form>
+                    </form>
+                </div>
                 <div class="col-1 header_bottom"></div>
 
             </div>
