@@ -39,6 +39,7 @@ class Producto(models.Model):
     img = models.ImageField(upload_to='images/', default=None)
     size=models.CharField('size',max_length=200,null=False)
     color=models.CharField('color',max_length=200,null=False)
+    price=models.FloatField(null=False, default=0)
 
     def get_absolute_url(self):
         return reverse('detalle_producto',args=[str(self.id)])
