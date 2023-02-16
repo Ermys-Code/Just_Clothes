@@ -70,3 +70,33 @@ def filter_category(request, pk):
     }
     
     return render(request, "filter.html", context = context)
+
+def addToCart(request, pk):
+    product = Producto.objects.get(pk=pk)
+    user = request.Usuario
+    carrito = Carrito()
+    
+    if(Pedido.objects.filter(user_id__exact=user) <= 0):
+        pedido = Pedido()
+        pedido.user_id = user
+        pedido.save()
+        
+        carrito.order_id = pedido.id
+    
+    carrito.price = product.price
+    carrito.product_id = product.id
+    carrito.cuantity = 1
+    
+    return redirect('detalle_producto')
+
+
+def detalle_producto(request, pk):
+    
+    product = Producto.objects.get(pk=pk)
+    
+    
+    context = {
+        "product":product,
+    }
+    
+    return render(request, "detalle_producto.html", context = context)
