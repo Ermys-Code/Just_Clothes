@@ -51,6 +51,7 @@ def filter_category(request, pk):
     results = Producto.objects.filter(category__exact=applied) 
         
     context = {
+        "applied":applied,
         
         "results":results
     }
