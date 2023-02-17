@@ -8,8 +8,6 @@ class Usuario(models.Model):
     user = models.OneToOneField("auth.user", on_delete=models.CASCADE)
     address=models.CharField('address',max_length=200,null=False)
 
-    def __str__(self):
-        return self.titulo
 
 
 class Pedido(models.Model):
