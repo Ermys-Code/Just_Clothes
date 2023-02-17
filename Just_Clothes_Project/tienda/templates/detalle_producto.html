@@ -1,6 +1,6 @@
 {% extends "base_generic.html" %}
 {% block content %}
 
-<a href="{% url 'add_to_cart' %}" class="btn">TEST</a>
+<a href="{{ product.get_absolute_url_add_to_cart }}" class="btn">TEST</a>
 
 {% endblock %}
