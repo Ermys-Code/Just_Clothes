@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+
+<ul>
+{% for product in carrito %}
+
+    <li>product.name</li>
+
+{% endfor %}
+</ul>
+
+<a href="pedido.get_absolute_url" class="btn">Comprar</a>
+
+{% endblock %}
