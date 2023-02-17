@@ -105,3 +105,46 @@ def detalle_producto(request, pk):
     }
     
     return render(request, "detalle_producto.html", context = context)
+
+
+
+
+def profile(request):    
+    user = request.user
+    username = request.user.username
+    first_name = request.user.first_name
+    last_name = request.user.last_name
+    email = request.user.email
+    
+    sent = False
+    message = ""
+    if request.method == "POST":
+        form = EditProfile(request.POST)
+        if form.is_valid():
+            try:
+                user.username = form.cleaned_data["username"]
+                user.first_name = form.cleaned_data["first_name"]
+                user.last_name = form.cleaned_data["last_name"]
+                user.email = form.cleaned_data["email"]
+                user.save()
+                sent = True
+                form = EditProfile()
+            except:
+                message = "Error saving values"
+        else:
+            message = "Values not valid"
+    else:
+        form = EditProfile()
+        
+    
+    context = {
+        "username" : username,
+        "first_name" : first_name,
+        "last_name" : last_name,
+        "email" : email,
+        "form" : form,
+        "message" : message,
+        "sent" : sent,
+    }
+    
+    return render(request, "profile.html", context=context)
