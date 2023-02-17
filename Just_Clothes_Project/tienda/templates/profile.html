@@ -34,11 +34,11 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    {% render_field form.username placeholder="Userame"%}
-    {% render_field form.first_name placeholder="First name"%}
-    {% render_field form.last_name placeholder="Second name"%}
-    {% render_field form.email placeholder="Email"%}
-    {% render_field form.address placeholder="Email"%}
+    {% render_field form.username placeholder="Userame" text="{{username}}" %}
+    {% render_field form.first_name placeholder="First name" text=username text="{{first_name}}" %}
+    {% render_field form.last_name placeholder="Second name" text="{{last_name}}"%}
+    {% render_field form.email placeholder="Email" text="{{email}}"%}
+    {% render_field form.address placeholder="Address" text="{{address}}" %}
     <input type="submit" class="btn send-profile-button" value="send">
 </form>
 </div>
