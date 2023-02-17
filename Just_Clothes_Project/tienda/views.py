@@ -148,6 +148,7 @@ def carrito(request):
         carrito = Carrito.objects.filter(order_id__exact = orders[0])
         
     context = {
+        "pedido":orders[0],
         "carrito":carrito,
         "categories":categories,
     }
