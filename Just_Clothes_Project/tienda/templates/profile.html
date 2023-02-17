@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+
+{% load widget_tweaks %}
+
+{% block title%} <title>Profile</title> {% endblock %}
+
+{% block content %}
+
+<div class="content-box profile-content">
+{% if sent %}
+    <p class="text-success">Profile edited correctly</p>
+{% endif %}
+{% if message != "" %}
+    <p class="text-danger">{{ message }}</p>
+{% endif %}
+
+<p>Username: {{ username }}</p>
+<p>First name: {{ first_name }}</p>
+<p>Last name: {{ last_name }}</p>
+<p>Email: {{ email }}</p>
+<p>Adress: {{ address }}</p>
+
+<div class="row">
+<div class="col-sm-12">
+    <button type="button" onclick="editDiv.style.display='block'" class="btn contact-button">Edit profile</button>
+</div>
+<div class="col-sm-12">
+    <a class="btn contact-button" href="{% url "deactivate_user" %}">Deactivate user</a>
+</div>
+</div>
+
+<div id="editDiv" style="display: none;">
+<h2>Edit profie</h2>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {% render_field form.username placeholder="Userame"%}
+    {% render_field form.first_name placeholder="First name"%}
+    {% render_field form.last_name placeholder="Second name"%}
+    {% render_field form.email placeholder="Email"%}
+    {% render_field form.address placeholder="Email"%}
+    <input type="submit" class="btn send-profile-button" value="send">
+</form>
+</div>
+</div>
+{% endblock %}
