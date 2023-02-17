@@ -143,9 +143,16 @@ def carrito(request):
     orders = Pedido.objects.filter(user_id__exact=just_clothes_user)
     
     carrito = []
+    order_contents = []
     
     if(len(orders) >= 0):
-        carrito = Carrito.objects.filter(order_id__exact = orders[0])
+        order_contents = Carrito.objects.filter(order_id__exact = orders[0])
+        
+    for content in order_contents:
+        
+        product = content.product_id
+        
+        carrito.append(product)
         
     context = {
         "pedido":orders[0],
