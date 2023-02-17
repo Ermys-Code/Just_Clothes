@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Usuario, Pedido, Categoria, Producto, Carrito, Stock
+from .forms import EditProfile
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import redirect
 
@@ -69,26 +70,34 @@ def filter_category(request, pk):
 
 def add_to_cart(request, pk):
     product = Producto.objects.get(pk=pk)
-    user = request.Usuario
+    
+    user = request.user
+    just_clothes_user = None
+    
+    for usuario in Usuario.objects.all():
+        if usuario.user == user:
+            just_clothes_user = usuario
+    
     carrito = Carrito()
     
-    orders = Pedido.objects.filter(user_id__exact=user)
+    orders = Pedido.objects.filter(user_id__exact=just_clothes_user)
     
-    if(orders <= 0):
+    if(len(orders) <= 0):
         pedido = Pedido()
-        pedido.user_id = user
+        pedido.user_id = just_clothes_user
         pedido.save()
         
-        carrito.order_id = pedido.id
+        carrito.order_id = pedido
         
     else:
-        carrito.order_id = orders[0].id
+        carrito.order_id = orders[0]
     
     carrito.price = product.price
-    carrito.product_id = product.id
+    carrito.product_id = product
     carrito.cuantity = 1
+    carrito.save()
     
-    return redirect(product.get_absolute_url)
+    return redirect("detalle_producto", pk = product.id)
 
 
 def detalle_producto(request, pk):
@@ -111,10 +120,18 @@ def detalle_producto(request, pk):
 
 def profile(request):    
     user = request.user
-    username = request.user.username
-    first_name = request.user.first_name
-    last_name = request.user.last_name
-    email = request.user.email
+    just_clothes_user = None
+    
+    for usuario in Usuario.objects.all():
+        if usuario.user == user:
+            just_clothes_user = usuario
+            
+    
+    username = just_clothes_user.user.username
+    first_name = just_clothes_user.user.first_name
+    last_name = just_clothes_user.user.last_name
+    email = just_clothes_user.user.email
+    address = just_clothes_user.address
     
     sent = False
     message = ""
@@ -122,11 +139,12 @@ def profile(request):
         form = EditProfile(request.POST)
         if form.is_valid():
             try:
-                user.username = form.cleaned_data["username"]
-                user.first_name = form.cleaned_data["first_name"]
-                user.last_name = form.cleaned_data["last_name"]
-                user.email = form.cleaned_data["email"]
-                user.save()
+                just_clothes_user.user.username = form.cleaned_data["username"]
+                just_clothes_user.user.first_name = form.cleaned_data["first_name"]
+                just_clothes_user.user.last_name = form.cleaned_data["last_name"]
+                just_clothes_user.user.email = form.cleaned_data["email"]
+                just_clothes_user.address = form.cleaned_data["address"]
+                just_clothes_user.save()
                 sent = True
                 form = EditProfile()
             except:
@@ -142,6 +160,7 @@ def profile(request):
         "first_name" : first_name,
         "last_name" : last_name,
         "email" : email,
+        "address" : address,
         "form" : form,
         "message" : message,
         "sent" : sent,

@@ -20,12 +20,15 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
+from tienda import views as tiendaViews
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tienda/', include('tienda.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include("django.contrib.auth.urls")),
+    path('accounts/profile/', tiendaViews.profile, name="profile"),
     path('', RedirectView.as_view(url="/tienda", permanent=False)),
 ]
 
