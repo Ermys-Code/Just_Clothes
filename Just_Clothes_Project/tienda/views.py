@@ -67,23 +67,28 @@ def filter_category(request, pk):
     
     return render(request, "filter.html", context = context)
 
-def addToCart(request, pk):
+def add_to_cart(request, pk):
     product = Producto.objects.get(pk=pk)
     user = request.Usuario
     carrito = Carrito()
     
-    if(Pedido.objects.filter(user_id__exact=user) <= 0):
+    orders = Pedido.objects.filter(user_id__exact=user)
+    
+    if(orders <= 0):
         pedido = Pedido()
         pedido.user_id = user
         pedido.save()
         
         carrito.order_id = pedido.id
+        
+    else:
+        carrito.order_id = orders[0].id
     
     carrito.price = product.price
     carrito.product_id = product.id
     carrito.cuantity = 1
     
-    return redirect('detalle_producto')
+    return redirect(product.get_absolute_url)
 
 
 def detalle_producto(request, pk):
