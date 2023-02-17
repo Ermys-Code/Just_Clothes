@@ -43,6 +43,9 @@ class Producto(models.Model):
 
     def get_absolute_url(self):
         return reverse('detalle_producto',args=[str(self.id)])
+    
+    def get_absolute_url_add_to_cart(self):
+        return reverse('add_to_cart',args=[str(self.id)])
 
     def __str__(self):
         return self.name
