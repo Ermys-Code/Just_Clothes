@@ -17,7 +17,7 @@ class Pedido(models.Model):
         return self.user_id
 
     def get_absolute_url(self):
-        return reverse('mostrar_carrito',args=[str(self.id)])
+        return reverse('buy',args=[str(self.id)])
 
 
 

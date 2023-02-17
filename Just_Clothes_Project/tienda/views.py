@@ -115,12 +115,54 @@ def detalle_producto(request, pk):
     
     return render(request, "detalle_producto.html", context = context)
 
+def buy(request, pk):
+    order = Pedido.objects.get(pk=pk)
+    
+    carrito = Carrito.objects.filter(order_id__exact = order)
+    
+    for product in carrito:
+        product.delete()
+    
+    return redirect("carrito")
+    
+    
 
 
+def carrito(request):
+    categories = []
+    user = request.user
+    just_clothes_user = None
+    
+    for category in Categoria.objects.all():
+        categories.append(category)
+    
+    for usuario in Usuario.objects.all():
+        if usuario.user == user:
+            just_clothes_user = usuario
+            
+    orders = Pedido.objects.filter(user_id__exact=just_clothes_user)
+    
+    carrito = []
+    
+    if(len(orders) >= 0):
+        carrito = Carrito.objects.filter(order_id__exact = orders[0])
+        
+    context = {
+        "carrito":carrito,
+        "categories":categories,
+    }
+    
+    return render(request, "carrito.html", context = context)
+    
 
 def profile(request):    
     user = request.user
     just_clothes_user = None
+    
+    categories = []
+    
+    for category in Categoria.objects.all():
+        categories.append(category)
     
     for usuario in Usuario.objects.all():
         if usuario.user == user:
@@ -156,6 +198,7 @@ def profile(request):
         
     
     context = {
+        "categories" : categories,
         "username" : username,
         "first_name" : first_name,
         "last_name" : last_name,
