@@ -1,0 +1,23 @@
+{% extends base_generic.html %}
+
+{% block content %}
+<div class="row justify-content-center">
+<div class="col-sm-4 content-box login-content">
+    <h2>Login</h2>
+    <form method="post" action="{% url "login" %}">
+        {% csrf_token %}
+        <ul>
+            <li>
+                {% render_field form.username %}
+            </li>
+            <li >
+
+                {% render_field form.password %}
+            </li> 
+        </ul>
+        <input type="submit" value="Login" class="btn login-button">
+        <input type="hidden" name="next" value="{{ next }}">    
+    </form>
+</div>
+</div>
+{% endblock %}
