@@ -6,7 +6,7 @@
 <div class="row justify-content-center">
 <div class="col-sm-4 content-box login-content">
     <h2>Login</h2>
-    <form method="post" action="{% url "login" %}">
+    <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <ul>
             <li>

@@ -68,6 +68,7 @@ def filter_category(request, pk):
     
     return render(request, "filter.html", context = context)
 
+@login_required
 def add_to_cart(request, pk):
     product = Producto.objects.get(pk=pk)
     
@@ -115,6 +116,8 @@ def detalle_producto(request, pk):
     
     return render(request, "detalle_producto.html", context = context)
 
+
+@login_required
 def buy(request, pk):
     order = Pedido.objects.get(pk=pk)
     
@@ -226,3 +229,13 @@ def profile(request):
     }
     
     return render(request, "profile.html", context=context)
+
+
+
+def login(request):
+    login = []
+    return render(
+        request,
+        'registration.login.html',
+        context={'login':login}
+    )
