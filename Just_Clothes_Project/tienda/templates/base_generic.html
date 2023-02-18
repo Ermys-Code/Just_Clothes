@@ -24,7 +24,7 @@
             <div class="row">
             
                 <div class="col-12 header_top">
-                    <h1 class="main_title">JUST CLOTHES</h1>
+                    <a href="{% url 'main' %}" class="main_title ">JUST CLOTHES</a>
                 </div>
             
                 <div class="col-12 header_separator">
@@ -48,16 +48,22 @@
                         </a>
                     </form>
                 </div>
-                <div class="col-1 header_bottom">
-                    <a href="{% url 'carrito' %}">carrito</a>
-                </div>
+                    <a href="{% url 'carrito' %}" class="col-1 header_bottom carrito_btn_container"><i class="bi bi-cart menu_icon"></i></a>
+                    
 
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
                         {% for category in categories %}
-                        <li class="list-group-item sidebar_base_li"><a href="{{ category.get_absolute_url }}">{{category.name}}</a></li>
-
+                        <li class="list-group-item sidebar_base_li"><a href="{{ category.get_absolute_url }}" class="menu_element">{{category.name}}</a></li>
+                        {% empty %}
+                        <li class="list-group-item sidebar_base_li"><a class="menu_element" href="{% url 'main' %}">Tienda</a></li>
                         {% endfor %}
+                        
+                        {% if not request.user.is_authenticated %}
+                        <li class="list-group-item sidebar_base_li"><a class="menu_element" href="{% url 'login' %}">Login</a></li>
+                        {% else %}
+                        <li class="list-group-item sidebar_base_li"><a class="menu_element" href="{% url 'logout' %}">Logout</a></li>
+                        {% endif %}
 
                     </div>
                   </div>

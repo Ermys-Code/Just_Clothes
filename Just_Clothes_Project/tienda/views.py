@@ -145,7 +145,7 @@ def carrito(request):
     carrito = []
     order_contents = []
     
-    if(len(orders) >= 0):
+    if(len(orders) > 0):
         order_contents = Carrito.objects.filter(order_id__exact = orders[0])
         
     for content in order_contents:
@@ -154,11 +154,19 @@ def carrito(request):
         
         carrito.append(product)
         
-    context = {
-        "pedido":orders[0],
-        "carrito":carrito,
-        "categories":categories,
-    }
+    if(len(orders) > 0):
+        context = {
+            "pedido":orders[0],
+            "carrito":carrito,
+            "categories":categories,
+        }
+    else:
+        pedido = "-1"
+        context = {
+            "pedido":pedido,
+            "carrito":carrito,
+            "categories":categories,
+        }
     
     return render(request, "carrito.html", context = context)
     

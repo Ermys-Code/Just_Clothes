@@ -1,6 +1,50 @@
 {% extends "base_generic.html" %}
 {% block content %}
 
-<a href="{{ product.get_absolute_url_add_to_cart }}" class="btn">TEST</a>
+<div class="row">
+    <div class="col-6">
+        <img src="{{ product.img.url }}" width="750em" height="750em"></img>
+    </div>
+    <div class="col-6 card detalle_container">
+        <div class="row">
+            <div class="col-12 carrito_col">
+            <p class="descripcion_producto"> {{ product.description }} </p>
+            </div>
+            <div class="col-6 carrito_col">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Color
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><p>Rojo</p></li>
+                      <li><p>Azul</p></li>
+                      <li><p>Verde</p></li>
+                      <li><p>Amarillo</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-6 carrito_col">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Talla
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><p>XS</p></li>
+                      <li><p>S</p></li>
+                      <li><p>M</p></li>
+                      <li><p>L</p></li>
+                      <li><p>XL</p></li>
+                    </ul>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 carrito_col">
+        <a href="{{ product.get_absolute_url_add_to_cart }}" class="btn btn-danger btn_añadir">AÑADIR A LA CESTA</a>
+    </div>
+</div>
 
 {% endblock %}

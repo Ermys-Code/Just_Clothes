@@ -1,8 +1,60 @@
-
-
-
 h1{
     margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.carrito_col{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.btn_comprar{
+    background-color: #CD3636;
+    margin-bottom: 1em;
+    width: 75%;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border-color: #CD3636;
+}
+
+.btn_añadir{
+    margin-top: 1em;
+    background-color: #CD3636;
+    margin-bottom: 1em;
+    width: 75%;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border-color: #CD3636;
+}
+
+.detalle_container{
+    border-color: #1C1C1C;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.carrito_vacio{
+    text-align: center;
+    font-size: 3em;
+}
+
+.producto_carrito{
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    padding: 1em;
+    border-width: 0.1em;
+    border-color: #1C1C1C;
 }
 
 .header_top{
@@ -30,12 +82,40 @@ h1{
 
 .main_title{
     font-size: 5em;
+    margin: 0;
+    color: #ffffff;
+}
+
+.main_title:hover{
+    color: white;
 }
 
 .menu_btn_container{
     height: 3em;
     border-right: solid white;
     
+}
+
+.menu_element{
+    color: black
+}
+
+.menu_element:hover{
+    color: black;
+}
+
+.menu_btn_container:hover{
+    color: white;
+}
+
+.carrito_btn_container{
+    height: 3em;
+    border-left: solid white;
+    
+}
+
+.carrito_btn_container:hover{
+    color: white;
 }
 
 .search_bar{
