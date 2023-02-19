@@ -173,7 +173,7 @@ def carrito(request):
     
     return render(request, "carrito.html", context = context)
     
-
+@login_required
 def profile(request):    
     user = request.user
     just_clothes_user = None

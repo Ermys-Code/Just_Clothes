@@ -62,7 +62,9 @@
                         {% if not request.user.is_authenticated %}
                         <li class="list-group-item sidebar_base_li"><a class="menu_element" href="{% url 'login' %}">Login</a></li>
                         {% else %}
-                        <li class="list-group-item sidebar_base_li"><a class="menu_element" href="{% url 'logout' %}">Logout</a></li>
+                        <li class="list-group-item sidebar_base_li"><a class="menu_element" href="{% url 'profile' %}">Perfil</a></li>
+                        <li class="list-group-item sidebar_base_li"><a class="menu_element" href="{% url 'logout' %}?next={{ request.path | urlencode }}">Logout</a></li>
+                        
                         {% endif %}
 
                     </div>
