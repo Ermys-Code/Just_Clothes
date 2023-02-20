@@ -12,7 +12,12 @@
             </div>
             <div class="col-6 carrito_col">
                 <select class="form-select" aria-label="Default select example" onchange="window.location.href=this.options [this.selectedIndex].value">
+
+                    <option selected>Color</option>
+
                     {% for product in records %}
+                    
+                    
     
                     <option value="{{ product.get_absolute_url }}" >{{ product.color }}</option>
                                     
@@ -23,6 +28,7 @@
             </div>
             <div class="col-6 carrito_col">
                 <select class="form-select" aria-label="Default select example" onchange="window.location.href=this.options [this.selectedIndex].value">
+                    <option selected>Talla</option>
 
 
                     {% for product in product_color %}

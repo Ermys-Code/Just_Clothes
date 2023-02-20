@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% load widget_tweaks %}
+
+{% block title%} <title>Registro</title> {% endblock %}
+
+{% block content %}
+
+
+<div id="editDiv" style="display: none;">
+<h2>Edit profie</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button href="{% url 'main' %}"type="submit">Enviar</button>
+ </form>
+</div>
+{% endblock %}

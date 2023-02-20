@@ -12,5 +12,6 @@ urlpatterns = [
     path("buy/<int:pk>", views.buy, name="buy"),
     path("login", views.login, name="login"),
     path("profile", views.profile, name="profile"),
+    path("new/registro", views.registro, name="registro"),
 ]
 
