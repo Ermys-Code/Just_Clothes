@@ -13,9 +13,6 @@ class Usuario(models.Model):
 class Pedido(models.Model):
     user_id = models.ForeignKey('Usuario',on_delete=models.SET_NULL,null=True,blank=True)
 
-    def __str__(self):
-        return self.user_id
-
     def get_absolute_url(self):
         return reverse('buy',args=[str(self.id)])
 

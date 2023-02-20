@@ -3,7 +3,9 @@
 
     {% if carrito %}
     <ul>
+    
     {% for product in carrito %}
+    
     
         <li class="card producto_carrito">
             <div class="row">
@@ -14,13 +16,16 @@
                     <img src="{{ product.img.url }}" height="75em" width="75em"></img>
                 </div>
                 <div class="col-4 carrito_col">
-                    1
+                    {{ product.price }} €
                 </div>
             </div>
         </li>
     
     {% endfor %}
+
     </ul>
+
+    <a>Total: {{ total }} €</a>
     
     <div class="row">
         <div class="col-12 carrito_col">

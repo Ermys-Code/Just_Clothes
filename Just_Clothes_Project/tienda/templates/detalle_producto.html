@@ -11,34 +11,43 @@
             <p class="descripcion_producto"> {{ product.description }} </p>
             </div>
             <div class="col-6 carrito_col">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Color
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><p>Rojo</p></li>
-                      <li><p>Azul</p></li>
-                      <li><p>Verde</p></li>
-                      <li><p>Amarillo</p></li>
-                    </ul>
-                </div>
+                <select class="form-select" aria-label="Default select example" onchange="window.location.href=this.options [this.selectedIndex].value">
+                    {% for product in records %}
+    
+                    <option value="{{ product.get_absolute_url }}" >{{ product.color }}</option>
+                                    
+                                
+                    
+                    {% endfor %}
+                  </select>
             </div>
             <div class="col-6 carrito_col">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Talla
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><p>XS</p></li>
-                      <li><p>S</p></li>
-                      <li><p>M</p></li>
-                      <li><p>L</p></li>
-                      <li><p>XL</p></li>
-                    </ul>
-                </div>    
+                <select class="form-select" aria-label="Default select example" onchange="window.location.href=this.options [this.selectedIndex].value">
+
+
+                    {% for product in product_color %}
+    
+                    <option value="{{ product.get_absolute_url }}" >{{ product.size }}</option>
+                                    
+                                
+                    
+                    {% endfor %}
+                  </select>  
+            </div>
+
+           
+        </div>
+
+        
+
+        <div class="row" >
+            <div class="col-12 carrito_col">
+                
+                <h3>{{ product.price }} €</h3>
             </div>
         </div>
     </div>
+   
 </div>
 
 <div class="row">

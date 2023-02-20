@@ -92,6 +92,11 @@ def add_to_cart(request, pk):
         
     else:
         carrito.order_id = orders[0]
+        records = Stock.objects.filter(product_id = product)
+        record = records[0]
+        print(record.cuantity)
+        record.cuantity= record.cuantity - 1
+        record.save()
     
     carrito.price = product.price
     carrito.product_id = product
@@ -107,11 +112,19 @@ def detalle_producto(request, pk):
     for category in Categoria.objects.all():
         categories.append(category)
     
-    product = Producto.objects.get(pk=pk) 
+    product = Producto.objects.get(pk=pk)
+    product_name = Producto.objects.filter(name=product.name)
+    product_color = Producto.objects.filter(name=product.name,color= product.color)
+   
+    records = Producto.objects.filter(name = product_name[0])
+    records1 = Producto.objects.filter(color = product_color[0])
     
     context = {
         "product":product,
-        "categories":categories,
+        "categories":categories, 
+        "records":records,
+        "product_color":product_color
+
     }
     
     return render(request, "detalle_producto.html", context = context)
@@ -135,6 +148,7 @@ def carrito(request):
     categories = []
     user = request.user
     just_clothes_user = None
+    total = 0
     
     for category in Categoria.objects.all():
         categories.append(category)
@@ -155,6 +169,7 @@ def carrito(request):
         
         product = content.product_id
         
+        total += product.price
         carrito.append(product)
         
     if(len(orders) > 0):
@@ -162,6 +177,7 @@ def carrito(request):
             "pedido":orders[0],
             "carrito":carrito,
             "categories":categories,
+            "total":total,
         }
     else:
         pedido = "-1"
@@ -169,6 +185,7 @@ def carrito(request):
             "pedido":pedido,
             "carrito":carrito,
             "categories":categories,
+            "total":total,
         }
     
     return render(request, "carrito.html", context = context)
