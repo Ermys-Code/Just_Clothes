@@ -277,6 +277,8 @@ def registro(request):
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.email = form.cleaned_data['email']
+            user.save()
+            
             usuario.user = user
             usuario.address = form.cleaned_data['address']
             usuario.save()
