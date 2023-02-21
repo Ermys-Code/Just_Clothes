@@ -39,7 +39,7 @@ def filter_global(request):
         categories.append(category)
         
     for product in Producto.objects.all():
-        if(applied.get("search") in product.name or applied.get("search") in product.description or applied.get("search") == product.category or applied.get("search") == product.color):
+        if(applied.get("search").lower() in product.name.lower() or applied.get("search").lower() in product.description.lower() or applied.get("search").capitalize() == product.category or applied.get("search").lower() == product.color.lower()):
             results.append(product)
                       
     context = {
