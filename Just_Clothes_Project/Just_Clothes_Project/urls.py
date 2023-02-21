@@ -29,6 +29,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include("django.contrib.auth.urls")),
     path('accounts/profile/', tiendaViews.profile, name="profile"),
+    #path("accounts/register/", tiendaViews.registro, name="registro"),
+    path("new/registro", tiendaViews.registro, name="registro"),
+
     path('', RedirectView.as_view(url="/tienda", permanent=False)),
 ]
 

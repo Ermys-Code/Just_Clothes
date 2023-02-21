@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Usuario, Pedido, Categoria, Producto, Carrito, Stock
-from .forms import EditProfile
+from django.contrib.auth.models import User
+from .forms import EditProfile,CreateProfile
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import redirect
 
@@ -249,10 +250,35 @@ def profile(request):
 
 
 
-def login(request):
-    login = []
-    return render(
-        request,
-        'registration.login.html',
-        context={'login':login}
-    )
+# def login(request):
+#     login = []
+#     return render(
+#         request,
+#         'registration.login.html',
+#         context={'login':login}
+#     )
+
+
+
+def registro(request):    
+    
+    form = CreateProfile()
+    if request.method == "POST":
+        #print(request.POST['title'])
+        form = CreateProfile(request.POST)
+        if form.is_valid():
+            print("Valido")
+            #form.save()
+            user = User.get_user_model().objects.create_user(username=form.cleaned_data['username'], first_name=form.cleaned_data['first_name'],
+                                            last_name=form.cleaned_data['last_name'], email=form.cleaned_data['email'], 
+                                            password=form.cleaned_data['password'])
+            
+            
+            
+            usuario = Usuario()
+            usuario.user = user
+            usuario.address = form.cleaned_data['address']
+            usuario.save()
+        else:
+            print("Invalido")
+    return render(request, 'registro.html', context={ 'form' : form })
