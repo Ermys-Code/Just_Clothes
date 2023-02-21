@@ -269,13 +269,14 @@ def registro(request):
         if form.is_valid():
             print("Valido")
             #form.save()
-            user = User.get_user_model().objects.create_user(username=form.cleaned_data['username'], first_name=form.cleaned_data['first_name'],
-                                            last_name=form.cleaned_data['last_name'], email=form.cleaned_data['email'], 
-                                            password=form.cleaned_data['password'])
-            
-            
+            user = User()
             
             usuario = Usuario()
+            user.username = form.cleaned_data['username']
+            user.password = form.cleaned_data['password']
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.email = form.cleaned_data['email']
             usuario.user = user
             usuario.address = form.cleaned_data['address']
             usuario.save()
