@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Usuario, Pedido, Categoria, Producto, Carrito, Stock
 from .forms import EditProfile,CreateProfile
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import redirect
 
@@ -277,6 +278,8 @@ def registro(request):
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.email = form.cleaned_data['email']
+            user.save()
+            
             usuario.user = user
             
             usuario.address = form.cleaned_data['address']
