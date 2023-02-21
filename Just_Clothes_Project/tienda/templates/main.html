@@ -8,7 +8,7 @@
     <div class="d-flex flex-row flex-nowrap overflow-auto">
         {% for product in category %}           
 
-        <div class="card card-size">
+        <div class="card card-size" onclick="location.href='{{ product.get_absolute_url }}';">
             
             <h5>{{product.name}}</h5>
             <img class="card_image" src={{product.img.url}} width="150em" height="150em"></img>
