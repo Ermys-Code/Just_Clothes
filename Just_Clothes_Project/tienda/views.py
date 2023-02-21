@@ -291,3 +291,13 @@ def registro(request):
         else:
             print("Invalido")
     return render(request, 'registro.html', context={ 'form' : form })
+
+def delete_to_cart(request,pk):
+
+    
+    record = Producto.objects.get(id = pk)
+    record.delete()
+
+    return redirect(
+        'carrito'
+    )
