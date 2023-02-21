@@ -268,14 +268,7 @@ def registro(request):
         if form.is_valid():
             print("Valido")
             #form.save()
-<<<<<<< HEAD
-            usuario = Usuario()
-            usuario.username = form.cleaned_data['username']
-            usuario.password = form.cleaned_data['password']
-            usuario.first_name = form.cleaned_data['first_name']
-            usuario.last_name = form.cleaned_data['last_name']
-            usuario.email = form.cleaned_data['email']
-=======
+            
             user = User()
             
             usuario = Usuario()
@@ -285,7 +278,7 @@ def registro(request):
             user.last_name = form.cleaned_data['last_name']
             user.email = form.cleaned_data['email']
             usuario.user = user
->>>>>>> c6830557a78aa8ac04e84e71e0879eb293f1ee18
+            
             usuario.address = form.cleaned_data['address']
             usuario.save()
         else:
