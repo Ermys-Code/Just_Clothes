@@ -269,6 +269,7 @@ def registro(request):
         if form.is_valid():
             print("Valido")
             #form.save()
+            
             user = User()
             
             usuario = Usuario()
@@ -280,6 +281,7 @@ def registro(request):
             user.save()
             
             usuario.user = user
+            
             usuario.address = form.cleaned_data['address']
             usuario.save()
         else:
