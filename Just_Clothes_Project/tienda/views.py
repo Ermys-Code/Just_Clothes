@@ -293,9 +293,10 @@ def registro(request):
     return render(request, 'registro.html', context={ 'form' : form })
 
 def delete_to_cart(request,pk):
+    
+    order_contents = Carrito.objects.filter(product_id__exact = pk)
 
-    print(pk)
-    Carrito.objects.get(pk = pk).delete()
+    order_contents[0].delete()
 
     return redirect(
         'carrito'
