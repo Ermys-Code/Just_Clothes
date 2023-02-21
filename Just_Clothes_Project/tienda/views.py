@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Usuario, Pedido, Categoria, Producto, Carrito, Stock
 from .forms import EditProfile,CreateProfile
 from django.contrib.auth.models import User
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import redirect
 
