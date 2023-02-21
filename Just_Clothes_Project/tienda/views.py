@@ -250,13 +250,13 @@ def profile(request):
 
 
 
-def login(request):
-    login = []
-    return render(
-        request,
-        'registration.login.html',
-        context={'login':login}
-    )
+# def login(request):
+#     login = []
+#     return render(
+#         request,
+#         'registration.login.html',
+#         context={'login':login}
+#     )
 
 
 
