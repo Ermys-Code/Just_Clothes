@@ -284,6 +284,7 @@ def registro(request):
             
             usuario.address = form.cleaned_data['address']
             usuario.save()
+            login(request, user)
             return redirect("login")
             
         else:
