@@ -284,4 +284,4 @@ def registro(request):
             usuario.save()
         else:
             print("Invalido")
-    return render(request, 'registration.registro.html', context={ 'form' : form })
+    return render(request, 'registro.html', context={ 'form' : form })
