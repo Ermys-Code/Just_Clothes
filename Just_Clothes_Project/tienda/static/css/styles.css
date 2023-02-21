@@ -37,6 +37,20 @@ a{
     border-color: #CD3636;
 }
 
+.btn_gris{
+    
+    background-color: lightgray;
+    border-color: lightgray;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 75%;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
 .detalle_container{
     border-color: #1C1C1C;
     display: flex;
@@ -206,3 +220,4 @@ a{
 .lista_login{
     list-style: none;
 }
+

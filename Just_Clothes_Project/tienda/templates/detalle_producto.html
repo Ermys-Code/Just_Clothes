@@ -52,14 +52,30 @@
                 <h3>{{ product.price }} €</h3>
             </div>
         </div>
+        <div class="row" >
+            <div class="col-12 carrito_col">
+                
+                <h3>Stock : {{ stock.cuantity }}</h3>
+            </div>
+        </div>
     </div>
    
 </div>
 
-<div class="row">
-    <div class="col-12 carrito_col">
-        <a href="{{ product.get_absolute_url_add_to_cart }}" class="btn btn-danger btn_añadir">AÑADIR A LA CESTA</a>
+{% if stock.cuantity == 0 %}
+    <div class="row">
+        <div class="col-12 carrito_col">
+            <a  href="" class="btn btn-secondary btn_gris">AÑADIR A LA CESTA</a>
+        </div>
     </div>
-</div>
+
+{% else %}
+    <div class="row">
+        <div class="col-12 carrito_col">
+            <a  href="" class="btn btn-danger btn_añadir">AÑADIR A LA CESTA</a>
+        </div>
+    </div>
+{% endif %}
+
 
 {% endblock %}

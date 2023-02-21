@@ -120,12 +120,15 @@ def detalle_producto(request, pk):
    
     records = Producto.objects.filter(name = product_name[0])
     records1 = Producto.objects.filter(color = product_color[0])
+
+    stock= Stock.objects.get(product_id=pk)
     
     context = {
         "product":product,
         "categories":categories, 
         "records":records,
-        "product_color":product_color
+        "product_color":product_color,
+        "stock":stock
 
     }
     
