@@ -185,3 +185,24 @@ a{
 .card_image{
     margin:auto
 }
+
+.price{
+    font-size: 2em;
+}
+
+.button_ver{
+    background-color: #CD3636;
+    border-color: #CD3636;
+    margin-bottom: 1em;
+}
+
+.button_registro{
+    background-color: #1C1C1C;
+    border-color: #1C1C1C;
+    margin-bottom: 1em;
+
+}
+
+.lista_login{
+    list-style: none;
+}

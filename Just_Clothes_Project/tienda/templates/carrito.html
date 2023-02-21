@@ -9,17 +9,17 @@
     
         <li class="card producto_carrito">
             <div class="row">
-                <div class="col-4 carrito_col">
+                <div class="col-3 carrito_col">
                     {{ product }}
                 </div>
-                <div class="col-4 carrito_col">
+                <div class="col-3 carrito_col">
                     <img src="{{ product.img.url }}" height="75em" width="75em"></img>
                 </div>
-                <div class="col-4 carrito_col">
+                <div class="col-3 carrito_col">
                     {{ product.price }} €
                 </div>
 
-                <div class="col-4 carrito_col">
+                <div class="col-3 carrito_col">
                     <a href="{{ product.get_absolute_url_delete_to_cart }}" class="col-1 header_bottom carrito_btn_container"><i class='bx bxs-trash-alt'></i></a>
                 </div>
             </div>
@@ -29,10 +29,12 @@
 
     </ul>
 
-    <a>Total: {{ total }} €</a>
     
     <div class="row">
-        <div class="col-12 carrito_col">
+        <div class="col-2 carrito_col">
+            <p class="price"><b>Total: {{ total }} €</b></p>
+        </div>
+        <div class="col-10 carrito_col">
             <a href="{{ pedido.get_absolute_url }}" class="btn btn-danger btn_comprar"><b>Comprar</b></a>
         </div>
     </div>
