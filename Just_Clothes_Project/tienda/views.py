@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Usuario, Pedido, Categoria, Producto, Carrito, Stock
+from django.contrib.auth.models import User
 from .forms import EditProfile,CreateProfile
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import redirect
@@ -249,13 +250,13 @@ def profile(request):
 
 
 
-def login(request):
-    login = []
-    return render(
-        request,
-        'registration.login.html',
-        context={'login':login}
-    )
+# def login(request):
+#     login = []
+#     return render(
+#         request,
+#         'registration.login.html',
+#         context={'login':login}
+#     )
 
 
 
@@ -268,14 +269,16 @@ def registro(request):
         if form.is_valid():
             print("Valido")
             #form.save()
+            user = User.get_user_model().objects.create_user(username=form.cleaned_data['username'], first_name=form.cleaned_data['first_name'],
+                                            last_name=form.cleaned_data['last_name'], email=form.cleaned_data['email'], 
+                                            password=form.cleaned_data['password'])
+            
+            
+            
             usuario = Usuario()
-            usuario.username = form.cleaned_data['username']
-            usuario.password = form.cleaned_data['password']
-            usuario.first_name = form.cleaned_data['first_name']
-            usuario.last_name = form.cleaned_data['last_name']
-            usuario.email = form.cleaned_data['email']
+            usuario.user = user
             usuario.address = form.cleaned_data['address']
             usuario.save()
         else:
             print("Invalido")
-    return render(request, 'registration.registro.html', context={ 'form' : form })
+    return render(request, 'registro.html', context={ 'form' : form })
