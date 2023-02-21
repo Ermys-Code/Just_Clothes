@@ -284,6 +284,8 @@ def registro(request):
             
             usuario.address = form.cleaned_data['address']
             usuario.save()
+            return redirect("login")
+            
         else:
             print("Invalido")
     return render(request, 'registro.html', context={ 'form' : form })
