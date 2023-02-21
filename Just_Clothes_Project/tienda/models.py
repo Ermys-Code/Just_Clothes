@@ -42,8 +42,7 @@ class Producto(models.Model):
     def get_absolute_url_add_to_cart(self):
         return reverse('add_to_cart',args=[str(self.id)])
 
-    def get_absolute_url_delete_to_cart(self):
-        return reverse('delete_to_cart',args=[str(self.id)])
+    
 
     def __str__(self):
         return self.name
@@ -56,6 +55,9 @@ class Carrito(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    def get_absolute_url_delete_to_cart(self):
+        return reverse('delete_to_cart',args=[str(self.id)])
 
 
 class Stock(models.Model):

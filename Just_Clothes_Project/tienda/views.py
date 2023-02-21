@@ -294,9 +294,8 @@ def registro(request):
 
 def delete_to_cart(request,pk):
 
-    
-    record = Producto.objects.get(id = pk)
-    record.delete()
+    print(pk)
+    Carrito.objects.get(pk = pk).delete()
 
     return redirect(
         'carrito'
